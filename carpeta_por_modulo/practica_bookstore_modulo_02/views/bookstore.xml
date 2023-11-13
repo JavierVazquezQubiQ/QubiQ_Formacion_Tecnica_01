@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='utf-8'?>
+
+<odoo>
+    <!-- practica.bookstore form view -->
+    <record id="practica_bookstore_view_form" model="ir.ui.view">
+        <field name="name">ppractica.bookstore.view.form</field>
+        <field name="model">practica.bookstore</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="price"/>
+                        <field name="edition"/>
+                        <field name="format"/>
+                        <field name="link"/>
+                        <field name="buy" optional="show"/>
+                        <field name="date"/>
+                        <field name="adress_id"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+    <record id="practica_bookstore_view_tree" model="ir.ui.view">
+        <field name="name">practica.bookstore.view.tree</field>
+        <field name="model">practica.bookstore</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="price" optional="hidden"/> <!-- Sirve para dar la opción de mostrar/ocultar campos -->
+                <field name="edition"/>
+                <field name="format"/>
+                <field name="link" optional="hidden"/>
+                <field name="buy" optional="show"/>
+                <field name="date"/>
+                <field name="adress_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- practica.bookstore action window -->
+    <record id="practica_bookstore_action" model="ir.actions.act_window">
+        <field name="name">Práctica Bookstore</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">practica.bookstore</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                There is no book in the bookstore
+            </p>
+            <p>
+                <!-- More details about what a user can do with this object will be OK -->
+            </p>
+        </field>
+    </record>
+
+    <!-- This Menu Item must have a parent and an action --> <!-- INVESTIGAR COMO PONER ICONO: https://spilymp.github.io/ibo/ -->
+    <menuitem id="practica_bookstore_menu_act" web_icon='practica_bookstore,static/icon.png' name="Práctica Bookstore" action="practica_bookstore_action" sequence="10"/>
+   
+</odoo>
