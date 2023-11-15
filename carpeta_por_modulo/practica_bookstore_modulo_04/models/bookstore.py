@@ -4,8 +4,9 @@ from odoo import fields, models, api
 
 # Snippets --> omod -->
 
+# EJEMPLO:
 #class PracticaLiberia(models.Model):
-#    _name = "bookstore"
+#    _name = "practica.liberia"
 #    _description = "Modelo para registrar libros"
 
 class Bookstore(models.Model):
@@ -23,14 +24,14 @@ class Bookstore(models.Model):
     # # Como el título y el nombre son iguales prodríamos ponerlo de la siguiente forma también:
     # # name = fields.Char()
     # # Odoo ya lo pone de forma automática con una mayúscula al inicio.
-    # book_name = fields.Char(string='Book Name', required=True)
+    # name = fields.Char(string='Book Name', required=True)
   
     # Edición - Números enteros.
     # edition = fields.Float()
     edition = fields.Integer(string='Edition', required=False)
     
     # Género - Números enteros.
-    # genre_id = fields.Many2one() = Muchos de muchos, te da a elegir entre varias opciones..
+    # genre_id = fields.Many2one() = Muchos de muchos, te da a elegir entre varias opciones...
     genre_ids = fields.Many2many(
         comodel_name='bookstore.genre',
         string='Genre',
@@ -40,10 +41,10 @@ class Bookstore(models.Model):
     # Se ha comprado - Números enteros.
     pack_check = fields.Boolean(string='Pack?', required=False)
     
-    # Packs - Números enteros.
-    # Packs = fields.Many2many() = Muchos de muchos, te da a elegir entre varias opciones..
-    packs_ids = fields.Many2many(
+    # Packs = fields.One2many() = Uno a muchos...
+    pack_ids = fields.One2many(
         comodel_name='bookstore.packs',
+        inverse_name='book_id',
         string='Packs',
         ondelete='restrict',
         required=False)

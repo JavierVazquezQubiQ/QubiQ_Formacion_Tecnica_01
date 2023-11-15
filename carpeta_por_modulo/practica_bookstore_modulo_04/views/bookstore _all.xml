@@ -1,0 +1,236 @@
+<?xml version='1.0' encoding='utf-8'?>
+
+<odoo>
+
+    <!-- bookstore form view -->
+    <record id="bookstore_view_form" model="ir.ui.view">
+        <field name="name">bookstore.view.form</field>
+        <field name="model">bookstore</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <!-- <field name="book_name"/> -->
+                        <field name="name"/>
+                        <field name="edition"/>
+                        <field name="genre_ids" widget="many2many_tags"/>
+                        <field name="format"/>
+                        <field name="link"/>
+                        <field name="buy"/>
+                        <field name="date" attrs="{'invisible': [('buy', '=', False)]}"/>
+                        <field name="price" attrs="{'invisible': [('buy', '=', False)]}"/>
+                        <field name="author_id"/>
+                        <field name="pack_check"/>
+                        <field name="packs_ids" attrs="{'invisible': [('pack_check', '=', False)]}" widget="many2many_tags"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="bookstore_view_tree" model="ir.ui.view">
+        <field name="name">bookstore.view.tree</field>
+        <field name="model">bookstore</field>
+        <field name="arch" type="xml">
+            <tree>
+                <!-- <field name="book_name"/> -->
+                <field name="name"/>
+                <field name="edition"/>
+                <field name="genre_ids" widget="many2many_tags"/>
+                <field name="format"/>
+                <field name="link" optional="hidden"/>
+                <field name="buy" optional="show"/>
+                <field name="date"/>
+                <field name="price" optional="hidden"/>
+                <field name="author_id"/>
+                <field name="pack_check"/>
+                <field name="packs_ids" attrs="{'invisible': [('pack_check', '=', False)]}" widget="many2many_tags"/>
+            </tree>
+        </field>
+    </record>
+
+    
+    
+    <!-- bookstore search view -->
+    <record id="bookstore_search_view" model="ir.ui.view">
+        <field name="name">bookstore.search.view</field>
+        <field name="model">bookstore</field>
+        <field name="arch" type="xml">
+            <search>
+                <!-- <field name="book_name"/> -->
+                <field name="name"/>
+                <filter string="Packs" name="filtro_packs" domain="[('packs_ids','!=', False)]"/>
+            </search>
+        </field>
+    </record>
+
+    <!-- bookstore action window -->
+    <record id="bookstore_action" model="ir.actions.act_window">
+        <field name="name">Bookstore</field> <!-- Aquí se cambia el titulo que aparece encima de la opción de "New" -->
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">bookstore</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                There is no book in the bookstore
+            </p>
+            <p>
+                <!-- More details about what a user can do with this object will be OK -->
+            </p>
+        </field>
+    </record>
+
+    <!-- Menu principal "Bookstore" -->
+    <menuitem id="bookstore_menu_act" web_icon='bookstore,static/icon.png' name="Bookstore" action="bookstore_action" sequence="10"/>
+
+
+
+    <!-- ====================================================================================================================== -->
+
+
+
+    <!-- Submenu "Datos" dentro de aplicación "Bookstore" -->
+    <menuitem id="menu_data" name="Data" parent="bookstore_menu_act" sequence="1"/>
+
+
+
+        <!-- Categoría Submenu "Books" dentro de "Datos" -->
+        <menuitem id="categ_menu_books" name="Books" parent="menu_data" sequence="1"/>
+
+
+
+            <!-- Nuevo apartado "Bookstore" dentro de "Books" -->
+            <menuitem id="menu_bookstore" name="Bookstore" action="bookstore_action" parent="categ_menu_books" sequence="1"/>
+
+
+
+            <!-- Genre form view -->
+            <record id="bookstore_genre_view_form" model="ir.ui.view">
+                <field name="name">bookstore.genre.view.form</field>
+                <field name="model">bookstore.genre</field>
+                <field name="arch" type="xml">
+                    <form>
+                        <sheet>
+                            <group>
+                                <field name="name"/>
+                                <field name="books_ids" widget="many2many_kanban"/>
+                            </group>
+                        </sheet>
+                    </form>
+                </field>
+            </record>
+
+
+            <record id="bookstore_genre_view_tree" model="ir.ui.view">
+                <field name="name">bookstore.genre.view.tree</field>
+                <field name="model">bookstore.genre</field>
+                <field name="arch" type="xml">
+                    <tree>
+                        <field name="name"/>
+                        <field name="books_ids" widget="many2many_kanban"/>
+                    </tree>
+                </field>
+            </record>
+
+            <!-- Genre action window -->
+            <record id="bookstore_genre_action" model="ir.actions.act_window">
+                <field name="name">Genre</field> <!-- Aquí se cambia el titulo que aparece encima de la opción de "New" -->
+                <field name="type">ir.actions.act_window</field>
+                <field name="res_model">bookstore.genre</field>
+                <field name="view_mode">tree,form</field>
+                <field name="help" type="html">
+                    <p class="oe_view_nocontent_create">
+                        There is no genres in the bookstore
+                    </p>
+                    <p>
+                        <!-- More details about what a user can do with this object will be OK -->
+                    </p>
+                </field>
+            </record>
+
+            <!-- Submenu "Genre" dentro de "Datos" -->
+            <menuitem id="menu_bookstore_genre" name="Genre" action="bookstore_genre_action" parent="categ_menu_books" sequence="2"/>
+
+
+
+            <!-- Packs form view -->
+            <record id="bookstore_packs_view_form" model="ir.ui.view">
+                <field name="name">bookstore.packs.view.form</field>
+                <field name="model">bookstore.packs</field>
+                <field name="arch" type="xml">
+                    <form>
+                        <sheet>
+                            <group>
+                                <field name="name"/>
+                                <field name="books_ids" widget="many2many_kanban"/>
+                            </group>
+                        </sheet>
+                    </form>
+                </field>
+            </record>
+
+
+            <record id="bookstore_packs_view_tree" model="ir.ui.view">
+                <field name="name">bookstore.packs.view.tree</field>
+                <field name="model">bookstore.packs</field>
+                <field name="arch" type="xml">
+                    <tree>
+                        <field name="name"/>
+                        <field name="books_ids" widget="many2many_kanban"/>
+                    </tree>
+                </field>
+            </record>
+
+            <!-- Genre action window -->
+            <record id="bookstore_packs_action" model="ir.actions.act_window">
+                <field name="name">Bookstore Packs</field> <!-- Aquí se cambia el titulo que aparece encima de la opción de "New" -->
+                <field name="type">ir.actions.act_window</field>
+                <field name="res_model">bookstore.packs</field>
+                <field name="view_mode">tree,form</field>
+                <field name="help" type="html">
+                    <p class="oe_view_nocontent_create">
+                        There is no packs in the bookstore
+                    </p>
+                    <p>
+                        <!-- More details about what a user can do with this object will be OK -->
+                    </p>
+                </field>
+            </record>
+
+            <!-- Submenu "Genre" dentro de "Datos" -->
+            <menuitem id="menu_bookstore_packs" name="Bookstore Packs" action="bookstore_packs_action" parent="categ_menu_books" sequence="3"/>
+
+
+
+        <!-- Categoría Submenu "Contacts" dentro de "Datos" -->
+        <menuitem id="categ_menu_contacts" name="Contacts" parent="menu_data" sequence="2"/>
+
+
+            <!-- Bookstore Partners action window -->
+            <record id="bookstore_partner_action" model="ir.actions.act_window">
+                <field name="name">Bookstore Partners</field>
+                <field name="res_model">res.partner</field>
+                <field name="view_mode">kanban,tree,form</field>
+                <field name="context">{'default_bookstore_partner': True}</field>
+                <field name="domain">[('bookstore_partner', '=', True)]</field>
+            </record>
+
+            <!-- Submenu "Contacts" dentro de "Datos" -->
+            <menuitem id="menu_bookstore_partner" name="Bookstore Partners" action="bookstore_partner_action" parent="categ_menu_contacts" sequence="1"/>
+
+
+            <!-- Bookstore Authors action window -->
+            <record id="book_author_action" model="ir.actions.act_window">
+                <field name="name">Book Authors</field>
+                <field name="res_model">res.partner</field>
+                <field name="view_mode">kanban,tree,form</field>
+                <field name="context">{'default_book_author': True}</field>
+                <field name="domain">[('book_author', '=', True)]</field>
+            </record>
+
+            <!-- Submenu "Contacts" dentro de "Datos" -->
+            <menuitem id="menu_book_author" name="Book Authors" action="book_author_action" parent="categ_menu_contacts" sequence="2"/>
+
+    <!-- ====================================================================================================================== -->
+
+</odoo>

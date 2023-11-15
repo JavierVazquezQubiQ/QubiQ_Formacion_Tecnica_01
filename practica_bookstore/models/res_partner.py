@@ -7,9 +7,9 @@ from odoo import fields, models
 class ResPartner(models.Model):
     _inherit = 'res.partner'
     
-    library_partner = fields.Boolean(string='Library partner')
+    bookstore_partner = fields.Boolean(string='Bookstore partner')
     
-    library_partner_number = fields.Integer(string='Partner ID')
+    bookstore_partner_number = fields.Integer(string='Partner ID')
     
     book_author = fields.Boolean(string='Book author')
 
