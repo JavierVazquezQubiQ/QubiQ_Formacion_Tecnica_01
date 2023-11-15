@@ -2,22 +2,40 @@
 
 <odoo>
 
-<!-- Res_partner inherit form view -->
-<record id="view_res_partner_form" model="ir.ui.view">
-    <field name="name">view.res.partner.form</field>
-    <field name="model">res.partner</field>
-    <field name="inherit_id" ref="base.view_partner_form"/>
-    <field name="arch" type="xml">
-        <!-- Add your xpath here -->
-        <xpath expr="//field[@name='vat']" position="after">
-            <field name="library_partner"/>
-            <field name="library_partner_number" attrs="{'invisible': [('library_partner', '=', False)]}"/>
-            <field name="book_author"/>
-            <field name="author_genre_ids" attrs="{'invisible': [('book_author', '=', False)]}" widget="many2many_tags"/>
-            <!-- Add your fields here -->
-            
-        </xpath>
-    </field>
-</record>
+    <!-- Res_partner inherit form view -->
+    <record id="view_res_partner_form" model="ir.ui.view">
+        <field name="name">view.res.partner.form</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <!-- Add your xpath here -->
+            <xpath expr="//field[@name='vat']" position="after">
+                <field name="bookstore_partner"/>
+                <field name="bookstore_partner_number" attrs="{'invisible': [('bookstore_partner', '=', False)]}"/>
+                <field name="book_author"/>
+                <field name="author_genre_ids" attrs="{'invisible': [('book_author', '=', False)]}" widget="many2many_tags"/>
+                <!-- Add your fields here -->
+                
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Bookstore Partners action window -->
+    <record id="bookstore_partner_action" model="ir.actions.act_window">
+        <field name="name">Bookstore Partners</field>
+        <field name="res_model">res.partner</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="context">{'default_bookstore_partner': True}</field>
+        <field name="domain">[('bookstore_partner', '=', True)]</field>
+    </record>
+
+    <!-- Bookstore Authors action window -->
+    <record id="book_author_action" model="ir.actions.act_window">
+        <field name="name">Book Authors</field>
+        <field name="res_model">res.partner</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="context">{'default_book_author': True}</field>
+        <field name="domain">[('book_author', '=', True)]</field>
+    </record>
 
 </odoo>
