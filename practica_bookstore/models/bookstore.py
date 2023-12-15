@@ -73,49 +73,8 @@ class Bookstore(models.Model):
     def _onchange_author_id(self):
         self.genre_ids = self.author_id.author_genre_ids
 
-    @api.model
     def create(self, vals):
-        vals.update({'detailed_type': 'product'})
         new_template = super().create(vals)
-        audit_logs = []
-        for book in new_template:
-            audit_logs.append({
-                'action_type': 'create',
-                'date_time': fields.Datetime.now(),
-                'user_id': self.env.user.id,
-                'book_id': book.id,
-                'book_name': book.product_tmpl_id.name
-            })
-        self.env['bookstore.audit'].create(audit_logs)
+        if new_template.detailed_type == 'consu':
+            new_template.write({'detailed_type': 'product'})
         return new_template
-
-    def write(self, vals):
-        res = super().write(vals)
-        for book in self:
-            self.env['bookstore.audit'].create({
-                'action_type': 'write',
-                'date_time': fields.Datetime.now(),
-                'user_id': self.env.user.id,
-                'book_id': book.id,
-                'book_name': book.product_tmpl_id.name
-            })
-        return res
-
-    def unlink(self):
-        audit_logs = []
-        for book in self:
-            audit_logs.append({
-                'action_type': 'unlink',
-                'date_time': fields.Datetime.now(),
-                'user_id': self.env.user.id,
-                'book_id': book.id,
-                'book_name': book.product_tmpl_id.name
-            })
-        self.env['bookstore.audit'].create(audit_logs)
-        return super(Bookstore, self).unlink()
-
-    @api.constrains('price')
-    def _check_negative_price(self):
-        for record in self:
-            if record.price < 0:
-                raise ValidationError("It is not possible to create negative pricing")

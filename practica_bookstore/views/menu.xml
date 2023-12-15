@@ -29,13 +29,4 @@
             <!-- Submenu "Book Authors" dentro de "Contacts" -->
             <menuitem id="menu_book_author" name="Book Authors" action="book_author_action" parent="categ_menu_contacts" sequence="2"/>
 
-    <!-- Submenu "Settings" dentro de aplicación "Bookstore" -->
-    <menuitem id="menu_settings" name="Settings" parent="bookstore_menu_act" sequence="2"/>
-
-        <!-- Categoría Submenu "General" dentro de "Settings" -->
-        <menuitem id="categ_menu_general" name="General" parent="menu_settings" sequence="1"/>
-
-            <!-- Nuevo apartado "Audit" dentro de "General" -->
-            <menuitem id="menu_audit" name="Audit" action="bookstore_audit_action" parent="categ_menu_general" sequence="1"/>
-
 </odoo>
