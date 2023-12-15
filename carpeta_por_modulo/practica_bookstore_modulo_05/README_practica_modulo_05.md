@@ -60,7 +60,7 @@
 
 ● Yo como usuario de Odoo, quiero [poder realizar compras de libros para tener stock disponible] para cuando se precise realizar una venta.
 
-● Yo como usuario de Odoo, quiero que a la hora de hacer una venta, [únicamente se debe poder hacer a los socios]
+● Yo como usuario de Odoo, quiero que a la hora de hacer una venta, [únicamente se debe poder hacer a los socios].
 
 ------------------------------------------------------------------------------------------------------------------
 
