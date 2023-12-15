@@ -1,6 +1,6 @@
 # QubiQ 01 Formacion Tecnica
 
-# PRÁCTICA MÓDULO 5
+# PRÁCTICA MÓDULO 6 - ORM ODOO
 
 ### Requisitos
 
