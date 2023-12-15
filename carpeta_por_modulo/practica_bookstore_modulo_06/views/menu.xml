@@ -36,6 +36,6 @@
         <menuitem id="categ_menu_general" name="General" parent="menu_settings" sequence="1"/>
 
             <!-- Nuevo apartado "Audit" dentro de "General" -->
-            <menuitem id="menu_audit" name="Audit" action="bookstore_audit_action" parent="categ_menu_general" sequence="1"/>
+            <menuitem id="menu_audit" name="Audit" action="bookstore_audit_action" parent="categ_menu_general" sequence="1" groups="practica_bookstore.group_bookstore_admin"/>
 
 </odoo>

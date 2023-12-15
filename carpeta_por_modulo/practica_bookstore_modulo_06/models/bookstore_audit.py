@@ -1,6 +1,6 @@
 # Copyright 2023 - Javier Vázquez Flores
 
-from odoo import fields, models
+from odoo import fields, models, api
 
 
 class BookstoreAudit(models.Model):
