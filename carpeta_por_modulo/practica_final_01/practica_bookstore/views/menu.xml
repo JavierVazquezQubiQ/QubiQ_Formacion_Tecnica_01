@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='utf-8'?>
+
+<odoo>
+
+       <!-- Menu principal "Bookstore" -->
+    <menuitem id="bookstore_menu_act" web_icon='bookstore,static/icon.png' name="Bookstore" action="bookstore_action" sequence="10"/>
+
+    <!-- Submenu "Data" dentro de aplicación "Bookstore" -->
+    <menuitem id="menu_data" name="Data" parent="bookstore_menu_act" sequence="1"/>
+
+        <!-- Categoría Submenu "Books" dentro de "Data" -->
+        <menuitem id="categ_menu_books" name="Books" parent="menu_data" sequence="1"/>
+
+            <!-- Nuevo apartado "Bookstore" dentro de "Books" -->
+            <menuitem id="menu_bookstore" name="Bookstore" action="bookstore_action" parent="categ_menu_books" sequence="1"/>
+
+            <!-- Submenu "Genre" dentro de "Books" -->
+            <menuitem id="menu_bookstore_genre" name="Genre" action="bookstore_genre_action" parent="categ_menu_books" sequence="2"/>
+
+            <!-- Submenu "Bookstore Packs" dentro de "Books" -->
+            <menuitem id="menu_bookstore_packs" name="Bookstore Packs" action="bookstore_packs_action" parent="categ_menu_books" sequence="3"/>
+
+        <!-- Categoría Submenu "Contacts" dentro de "Data" -->
+        <menuitem id="categ_menu_contacts" name="Contacts" parent="menu_data" sequence="2"/>
+
+            <!-- Submenu "Bookstore Partners" dentro de "Contacts" -->
+            <menuitem id="menu_bookstore_partner" name="Bookstore Partners" action="bookstore_partner_action" parent="categ_menu_contacts" sequence="1"/>
+
+            <!-- Submenu "Book Authors" dentro de "Contacts" -->
+            <menuitem id="menu_book_author" name="Book Authors" action="book_author_action" parent="categ_menu_contacts" sequence="2"/>
+
+    <!-- Submenu "Settings" dentro de aplicación "Bookstore" -->
+    <menuitem id="menu_settings" name="Settings" parent="bookstore_menu_act" sequence="2"/>
+
+        <!-- Categoría Submenu "General" dentro de "Settings" -->
+        <menuitem id="categ_menu_general" name="General" parent="menu_settings" sequence="1"/>
+
+            <!-- Nuevo apartado "Audit" dentro de "General" -->
+            <menuitem id="menu_audit" name="Audit" action="bookstore_audit_action" parent="categ_menu_general" sequence="1" groups="practica_bookstore.group_bookstore_admin"/>
+
+</odoo>
