@@ -31,6 +31,7 @@
 3 ● Creamos un nuevo modelo que represente las líneas de comisiones, los campos son:
 
     Name -> Relación a uno con el modelo res.partner filtrado por los que son comerciales.
+
     Comisión -> % de comisión
 
 Hacemos una relación en el pedido de ventas con este nuevo modelo. Recordamos que se deben poder introducir muchas líneas y estas serán únicas para cada pedido. ¿Qué tipo de relación crees que es? Agregamos el campo en la vista y utilizamos el atributo editable dentro del tree y options en el campo comercial para impedir que se puedan crear desde la misma tabla.
