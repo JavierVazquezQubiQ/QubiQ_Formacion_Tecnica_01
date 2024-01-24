@@ -56,7 +56,7 @@ Hacemos una relación en el pedido de ventas con este nuevo modelo. Recordamos q
 
 ### Recursos / Solución
 
-● [Campos](https://github.com/QubiQ/sistema-doq/blob/4de257c1348b32afc309593936b6a58ee40ae4bd/practica_final_1/models/res_partner.py#L9), [vista Formulario](https://github.com/QubiQ/sistema-doq/blob/4de257c1348b32afc309593936b6a58ee40ae4bd/practica_final_1/views/res_partner.xml#L10), [Filtro](https://github.com/QubiQ/sistema-doq/blob/4de257c1348b32afc309593936b6a58ee40ae4bd/practica_final_1/views/res_partner.xml#L24).
+● [Campos](https://github.com/QubiQ/sistema-doq/blob/4de257c1348b32afc309593936b6a58ee40ae4bd/practica_final_1/models/res_partner.py#L9), [vista Formulario](https://github.com/QubiQ/sistema-doq/blob/4de257c1348b32afc309593936b6a58ee40ae4bd/practica_final_1/views/res_partner.xml#L10), [filtro](https://github.com/QubiQ/sistema-doq/blob/4de257c1348b32afc309593936b6a58ee40ae4bd/practica_final_1/views/res_partner.xml#L24).
 
 ● [SQL constraint](https://github.com/QubiQ/sistema-doq/blob/4de257c1348b32afc309593936b6a58ee40ae4bd/practica_final_1/models/res_partner.py#L14).
 
