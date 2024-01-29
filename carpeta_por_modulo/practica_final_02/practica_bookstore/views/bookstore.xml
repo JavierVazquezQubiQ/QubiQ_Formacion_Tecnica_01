@@ -1,0 +1,84 @@
+<?xml version='1.0' encoding='utf-8'?>
+
+<odoo>
+
+    <!-- bookstore form view -->
+    <record id="bookstore_view_form" model="ir.ui.view">
+        <field name="name">bookstore.view.form</field>
+        <field name="model">bookstore</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="format"/>
+                            <field name="edition"/>
+                            <field name="author_id"/>
+                            <field name="genre_ids" widget="many2many_tags"/>
+                            <field name="link"/>
+                            <field name="buy"/>
+                            <field name="date" attrs="{'invisible': [('buy', '=', False)]}"/>
+                            <field name="price" attrs="{'invisible': [('buy', '=', False)]}"/>
+                            <field name="pack_check"/>
+                            <field name="pack_ids" widget="many2many_tags"/>
+                        </group>
+                        <group>
+                            <field name="image_1920" widget="image" class="oe_avatar"/>
+                            <field name="synopsis"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- bookstore tree view -->
+    <record id="bookstore_view_tree" model="ir.ui.view">
+        <field name="name">bookstore.view.tree</field>
+        <field name="model">bookstore</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="format"/>
+                <field name="edition"/>
+                <field name="author_id"/>
+                <field name="genre_ids" widget="many2many_tags"/>
+                <field name="link" optional="hidden"/>
+                <field name="buy" optional="show"/>
+                <field name="date"/>
+                <field name="price" optional="hidden"/>
+                <field name="pack_check"/>
+                <field name="pack_ids" attrs="{'invisible': [('pack_check', '=', False)]}" widget="many2many_tags"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- bookstore search view -->
+    <record id="bookstore_search_view" model="ir.ui.view">
+        <field name="name">bookstore.search.view</field>
+        <field name="model">bookstore</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <filter string="Packs" name="filtro_packs" domain="[('pack_ids','!=', False)]"/>
+                <filter string="Colecciones" name="filtro_packs_colecciones" domain="[('pack_ids','=', 'colecciones')]"/>
+                <filter string="Sagas" name="filtro_packs_sagas" domain="[('pack_ids','=', 'sagas')]"/>
+            </search>
+        </field>
+    </record>
+
+    <!-- bookstore action window -->
+    <record id="bookstore_action" model="ir.actions.act_window">
+        <field name="name">Bookstore</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">bookstore</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                There is no book in the bookstore
+            </p>
+        </field>
+    </record>
+
+</odoo>
