@@ -19,6 +19,7 @@
 4 ● Yo como usuario quiero poder filtrar los productos que son packs y poder agrupar los packs por sus componentes.
 
 5 ● Yo como usuario quiero extraer un informe dentro del producto para ver el desglose de sus componentes la cantidad y el precio.
+
 ------------------------------------------------------------------------------------------------------------------
 
 ### Descripción técnica
@@ -29,7 +30,6 @@
     ● Cantidad.
     ● Precio de venta.
 Este precio de venta se ha de recoger de la ficha del componente **cuando cambie** el producto en la línea.
-
 Además queremos agregar estos componentes en la ficha del producto por lo que agregaremos:
     ● Relación de este nuevo modelo con la plantilla de producto.
     ● Así mismo un check para indicar que se trata de un pack y en caso afirmativo mostrar en una nueva pestaña del formulario **agregar** estas líneas desde una **tabla directamente**.
@@ -41,10 +41,10 @@ Hay que agregar estos campos en la pestaña de los componentes.
 
 3 ● **Herencia del modelo de líneas de venta** para modificar el método **que se ejecuta al cambiar** el producto en la línea de venta.
 Para modificar la descripción hemos de agregar a lo que ya viene lo siguiente:
-<texto_original>
--- Components --
-<nombre_componente> - <cantidad>
-<nombre_componente_2> - <cantidad>
+    <texto_original>
+    -- Components --
+    <nombre_componente> - <cantidad>
+    <nombre_componente_2> - <cantidad>
 
 4 ● Vamos a heredar la vista de búsqueda de los productos para agregar un filtro de solo packs. Recordamos que hemos creado un nuevo modelo para los componentes así pues para ver la agrupación de estos por cada pack hemos de crear un punto de menu una vista lista y una búsqueda para poder visualizar las líneas de cada componente y poder agruparlas por pack. Vamos hacer que no se puedan ni crear ni editar componentes desde ese listado.
 Agregamos el punto de menú debajo de Variantes de producto en el módulo Ventas.
