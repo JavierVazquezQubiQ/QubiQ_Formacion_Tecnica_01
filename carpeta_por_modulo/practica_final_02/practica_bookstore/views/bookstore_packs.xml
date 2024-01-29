@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='utf-8'?>
+
+<odoo>
+
+    <!-- Packs form view -->
+    <record id="bookstore_packs_view_form" model="ir.ui.view">
+        <field name="name">bookstore.packs.view.form</field>
+        <field name="model">bookstore.packs</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="book_ids" widget="many2many_kanban"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+    <record id="bookstore_packs_view_tree" model="ir.ui.view">
+        <field name="name">bookstore.packs.view.tree</field>
+        <field name="model">bookstore.packs</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="book_ids" widget="many2many_kanban"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Genre action window -->
+    <record id="bookstore_packs_action" model="ir.actions.act_window">
+        <field name="name">Bookstore Packs</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">bookstore.packs</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                There is no packs in the bookstore
+            </p>
+        </field>
+    </record>
+
+</odoo>

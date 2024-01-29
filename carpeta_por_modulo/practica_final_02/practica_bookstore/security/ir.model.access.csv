@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_practica_bookstore,access.practica.bookstore,model_bookstore,base.group_user,1,1,1,1
+access_bookstore_genre,access.practica.bookstore,model_bookstore_genre,base.group_user,1,1,1,1
+access_bookstore_packs,access.practica.bookstore,model_bookstore_packs,base.group_user,1,1,1,1
+access_bookstore_audit,access.practica.bookstore,model_bookstore_audit,group_bookstore_admin,1,1,1,1
+access_res_partner,access.practica.bookstore,model_res_partner,base.group_user,1,1,1,1

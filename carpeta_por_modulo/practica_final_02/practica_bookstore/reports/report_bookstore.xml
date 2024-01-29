@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='utf-8'?>
+
+<odoo>
+
+    <!-- Bookstore Report Document -->
+    <template id="bookstore_report_document_container">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="practica_bookstore.bookstore_report_document_layout"/>
+            </t>
+        </t>
+    </template>
+
+    <template id="bookstore_report_document_layout">
+        <t t-call="web.external_layout">
+            <t t-if="o.product_tmpl_id.image_1920">
+                <img t-attf-src="data:image/*;base64,{{o.product_tmpl_id.image_1920}}" height="300" width="200"/>
+            </t>
+            <div style="margin-top: 30px;">
+                <h2><strong t-field="o.name"/></h2>
+            </div>
+            <div style="margin-top: 30px;">
+                <h4>Autor:<span t-field="o.author_id"/></h4>
+            </div>
+            <div style="margin-top: 30px;">
+                <h4>Edición:<span t-field="o.edition"/></h4>
+            </div>
+            <div style="margin-top: 30px;">
+                <h4>Synopsis:<span t-field="o.synopsis"/></h4>
+            </div>
+        </t>
+    </template>
+
+</odoo>
