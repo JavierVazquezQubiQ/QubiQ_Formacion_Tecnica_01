@@ -1,19 +1,20 @@
-# Copyright 2023 - Javier Vázquez Flores
+# Copyright 2024 Javier Vázquez <javier.vazquez@qubiq.es>
+# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl)
 
-from odoo import api, fields, models
+from odoo import api, fields, models, _
 
 
 class SaleCommission(models.Model):
     _name = 'sale.commission'
-    _description = 'Sale Commission'
+    _description = _('Sale Commission')
 
     name = fields.Many2one(
-        string='Commercial',
+        string=_('Commercial'),
         comodel_name="res.partner",
         domain="[('is_commercial', '=', True)]"
     )
     commission = fields.Float(
-        string='%'
+        string=_('% Commission')
     )
     sale_id = fields.Many2one(
         comodel_name='sale.order'

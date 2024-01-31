@@ -1,10 +1,11 @@
-# Copyright 2023 - Javier Vázquez Flores
+# Copyright 2024 Javier Vázquez <javier.vazquez@qubiq.es>
+# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl)
 
 {
-    "name": "User Stories",
+    "name": "Practica Final 01 - User Stories",
     "summary": "Register user stories in Odoo",
     "version": "16.0.1.0.0",
-    "category": "Base",
+    "category": "Sales",
     "website": "https://www.qubiq.es",
     "author": "QubiQ",
     "license": "AGPL-3",

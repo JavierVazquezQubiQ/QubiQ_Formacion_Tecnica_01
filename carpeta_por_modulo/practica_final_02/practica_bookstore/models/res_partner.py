@@ -1,6 +1,7 @@
-# Copyright 2023 - Javier Vázquez Flores
+# Copyright 2024 Javier Vázquez <javier.vazquez@qubiq.es>
+# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl)
 
-from odoo import fields, models, api
+from odoo import fields, models, api, _
 from odoo.exceptions import ValidationError
 
 
@@ -16,11 +17,11 @@ class ResPartner(models.Model):
     book_author = fields.Boolean()
     bookstore_partner = fields.Boolean()
     bookstore_partner_number = fields.Integer(
-        string='Partner ID'
+        string=_('Partner ID')
     )
     author_genre_ids = fields.Many2many(
         comodel_name='bookstore.genre',
-        string='Genre',
+        string=_('Genre'),
         ondelete='restrict',
         required=False,
     )
@@ -45,6 +46,9 @@ class ResPartner(models.Model):
                 ]
             )
             if has_book and not record.book_author:
-                raise ValidationError(
-                    "You cannot deactivate the author check on a contact with assigned books in the bookstore. Remove them first."
-                )
+                raise ValidationError(_(
+                    """
+                    You cannot deactivate the author check on a contact with
+                    assigned books in the bookstore. Remove them first.
+                    """
+                ))

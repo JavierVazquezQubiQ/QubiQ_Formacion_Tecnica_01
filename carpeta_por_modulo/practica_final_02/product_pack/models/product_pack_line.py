@@ -1,6 +1,7 @@
-# Copyright 2023 - Javier Vázquez Flores
+# Copyright 2024 Javier Vázquez <javier.vazquez@qubiq.es>
+# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl)
 
-from odoo import fields, models, api
+from odoo import fields, models, api, _
 
 
 class ProductPackLine(models.Model):
@@ -8,20 +9,17 @@ class ProductPackLine(models.Model):
 
     pack_id = fields.Many2one(
         comodel_name='product.product',
-        string="Pack",
+        string=_("Pack"),
     )
     component_id = fields.Many2one(
         comodel_name='product.product',
-        string="Component",
+        string=_("Component"),
         required=True,
     )
     quantity = fields.Integer(
-        string="Quantity",
         default=1
     )
-    price = fields.Float(
-        string="Price",
-    )
+    price = fields.Float()
 
     @api.onchange('component_id')
     def onchange_component_id(self):

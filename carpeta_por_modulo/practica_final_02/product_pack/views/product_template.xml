@@ -1,8 +1,12 @@
 <?xml version='1.0' encoding='utf-8'?>
-<!-- Copyright 2023 - Javier Vázquez Flores -->
+<!--
+Copyright 2024 Javier Vázquez <javier.vazquez@qubiq.es>
+License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl)
+-->
 
 <odoo>
 
+    <!-- product_template view form inhetit -->
     <record id="product_template_form_view" model="ir.ui.view">
         <field name="name">product.template.inherit.view.form</field>
         <field name="model">product.template</field>
@@ -14,17 +18,16 @@
                     <label for="is_pack"/>
                 </div>
             </xpath>
-
-            <!-- Hacemos solo lectura el campo de precio de venta cuando el metodo es suma de componentes-->
+            <!-- We read only the selling price field when the method is sum of components -->
+            <!--
             <xpath expr="//field[@name='list_price']" position="attributes">
-                <attribute name="attrs">{'readonly': [('is_pack', '=', True)]}</attribute>
-                <!-- <attribute name="attrs">{'readonly': [('is_pack', '=', True), ('price_pack_method', '=', 'component_total')]}</attribute> -->
+                <attribute name="attrs">{'readonly': [('is_pack', '=', True), ('price_pack_method', '=', 'component_total')]}</attribute>
             </xpath>
+            -->
             <xpath expr="//notebook" position="inside">
                 <page string="Pack Options" name="pack"
                     attrs="{'invisible': [('is_pack', '=', False)]}">
-
-                    <!-- Utilizo el widget monetary para agregar el simbolo de la moneda-->
+                    <!-- I use the monetary widget to add the currency token-->
                     <group string="Options" col="4">
                         <field name="price_pack_method"/>
                         <field name="components_price" widget="monetary" attrs="{'readonly': [('is_pack', '=', True), ('price_pack_method', '=', 'component_total')]}"

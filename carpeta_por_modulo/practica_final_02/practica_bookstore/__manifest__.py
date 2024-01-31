@@ -1,10 +1,11 @@
-# Copyright 2023 - Javier Vázquez Flores
+# Copyright 2024 Javier Vázquez <javier.vazquez@qubiq.es>
+# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl)
 
 {
     "name": "Bookstore",
     "summary": "Register books to have a bookstore in Odoo",
     "version": "16.0.1.0.0",
-    "category": "Base",
+    "category": "Product",
     "website": "https://www.qubiq.es",
     "author": "QubiQ",
     "license": "AGPL-3",
