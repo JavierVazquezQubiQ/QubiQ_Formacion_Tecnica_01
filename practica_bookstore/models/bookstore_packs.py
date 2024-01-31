@@ -1,26 +1,27 @@
-# Copyright 2023 - Javier Vázquez Flores
+# Copyright 2024 Javier Vázquez <javier.vazquez@qubiq.es>
+# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl)
 
-from odoo import fields, models, api
+from odoo import fields, models, api, _
 from odoo.exceptions import ValidationError
 
 
 class BookstorePacks(models.Model):
     _name = "bookstore.packs"
-    _description = "Template for packing books"
+    _description = _("Template for packing books")
 
     name = fields.Selection(
         string='Pack Type',
         selection=[
-            ('sagas', 'Sagas'),
-            ('colecciones', 'Colecciones')
-            ],
-        default='colecciones',
-        )
-
+            ('sagas', _('Sagas')),
+            ('collections', _('Collections'))
+        ],
+        default='collections',
+    )
     book_ids = fields.Many2many(
         comodel_name='bookstore',
         ondelete='restrict',
-        required=False)
+        required=False
+    )
 
     @api.constrains('name')
     def _check_unique_name(self):
@@ -28,7 +29,9 @@ class BookstorePacks(models.Model):
             existing_record = self.env['bookstore.packs'].search(
                 [('name', '=', record.name)]
             )
-            if len(existing_record) > 1 or (len(existing_record) == 1 and existing_record != record):
-                raise ValidationError(
+            if len(existing_record) > 1 or (
+                len(existing_record) == 1 and existing_record != record
+            ):
+                raise ValidationError(_(
                     "A pack with the same name already exists!"
-                )
+                ))

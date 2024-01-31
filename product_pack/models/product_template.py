@@ -1,6 +1,7 @@
-# Copyright 2023 - Javier Vázquez Flores
+# Copyright 2024 Javier Vázquez <javier.vazquez@qubiq.es>
+# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl)
 
-from odoo import api, fields, models
+from odoo import api, fields, models, _
 
 
 class ProductTemplate(models.Model):
@@ -9,17 +10,15 @@ class ProductTemplate(models.Model):
     component_line_ids = fields.One2many(
         comodel_name='product.pack.line',
         inverse_name='pack_id',
-        string='Pack Components Lines'
+        string=_('Pack Components Lines')
     )
-    is_pack = fields.Boolean(
-        string='Is Pack'
-    )
+    is_pack = fields.Boolean()
     price_pack_method = fields.Selection(
-        string='Cost Calculation',
+        string=_('Cost Calculation'),
         selection=[
-            ('normal_price', 'Normal Price'),
-            ('component_total', 'Sum Components'),
-            ],
+            ('normal_price', _('Normal Price')),
+            ('component_total', _('Sum Components')),
+        ],
         default="normal_price"
     )
     components_price = fields.Float(

@@ -1,4 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
+<!--
+Copyright 2024 Javier Vázquez <javier.vazquez@qubiq.es>
+License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl)
+-->
 
 <odoo>
 
@@ -18,7 +22,7 @@
         </field>
     </record>
 
-
+    <!-- Packs tree view -->
     <record id="bookstore_packs_view_tree" model="ir.ui.view">
         <field name="name">bookstore.packs.view.tree</field>
         <field name="model">bookstore.packs</field>
@@ -30,7 +34,7 @@
         </field>
     </record>
 
-    <!-- Genre action window -->
+    <!-- Packs action window -->
     <record id="bookstore_packs_action" model="ir.actions.act_window">
         <field name="name">Bookstore Packs</field>
         <field name="type">ir.actions.act_window</field>

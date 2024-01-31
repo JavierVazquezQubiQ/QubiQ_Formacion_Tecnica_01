@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+Copyright 2024 Javier Vázquez <javier.vazquez@qubiq.es>
+License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl)
+-->
 
 <odoo>
 
+    <!-- sale_report inherit -->
     <template id="sale_report_inherit" inherit_id="sale.report_saleorder_document">
             <xpath expr="//div[@t-if='doc.user_id.name']" position="after">
                 <t t-if="doc.partner_id.bookstore_partner_number">

@@ -1,33 +1,33 @@
-# Copyright 2023 - Javier Vázquez Flores
+# Copyright 2024 Javier Vázquez <javier.vazquez@qubiq.es>
+# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl)
 
-from odoo import api, fields, models
+from odoo import api, fields, models, _
 from odoo.exceptions import UserError
 
 
 class ResPartner(models.Model):
     _inherit = 'res.partner'
 
-    is_commercial = fields.Boolean(
-        string='Commercial'
-    )
+    is_commercial = fields.Boolean()
     commercial_code = fields.Char(
         copy=False
     )
     commission = fields.Float(
-        string='% Commission'
+        string=_('% Commission')
     )
 
     _sql_constraints = [
         ('commercial_code_uniq', 'unique (commercial_code)',
-         'The commercial code must be unique!')
+         _('The commercial code must be unique!'))
     ]
 
     def unlink(self):
-        # Mapped itera sobre un recordset para agrupar un campo en una lista
+        # Mapped iterates over a recordset to group a field into a list.
         if any(self.mapped('commercial_code')):
-            raise UserError("You can not delete a contact with"
-                            " a Commercial Code")
-        # Es lo mismo que hacer
+            raise UserError(_(
+                "You can not delete a contact with a Commercial Code"
+            ))
+        # It is the same as doing
         # for rec in self:
         #     if rec.commercial_code:
         #         raise

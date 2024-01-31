@@ -1,6 +1,7 @@
-# Copyright 2023 - Javier Vázquez Flores
+# Copyright 2024 Javier Vázquez <javier.vazquez@qubiq.es>
+# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl)
 
-from odoo import models, exceptions
+from odoo import models, exceptions, _
 
 
 class SaleOrder(models.Model):
@@ -9,5 +10,5 @@ class SaleOrder(models.Model):
     def action_confirm(self):
         for order in self:
             if not order.partner_id.bookstore_partner:
-                raise exceptions.UserError("You can only sell to members.")
+                raise exceptions.UserError(_("You can only sell to members."))
         return super().action_confirm()

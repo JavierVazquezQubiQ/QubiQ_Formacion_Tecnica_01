@@ -1,4 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
+<!--
+Copyright 2024 Javier Vázquez <javier.vazquez@qubiq.es>
+License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl)
+-->
 
 <odoo>
 
@@ -62,8 +66,8 @@
             <search>
                 <field name="name"/>
                 <filter string="Packs" name="filtro_packs" domain="[('pack_ids','!=', False)]"/>
-                <filter string="Colecciones" name="filtro_packs_colecciones" domain="[('pack_ids','=', 'colecciones')]"/>
-                <filter string="Sagas" name="filtro_packs_sagas" domain="[('pack_ids','=', 'sagas')]"/>
+                <filter string="Collections" name="packs_collections_filter" domain="[('pack_ids','=', 'collections')]"/>
+                <filter string="Sagas" name="packs_sagas_filter" domain="[('pack_ids','=', 'sagas')]"/>
             </search>
         </field>
     </record>
