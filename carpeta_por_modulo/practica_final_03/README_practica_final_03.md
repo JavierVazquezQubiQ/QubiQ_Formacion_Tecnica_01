@@ -1,6 +1,6 @@
 # QubiQ 01 Formacion Tecnica
 
-# PRÁCTICA FINAL 2
+# PRÁCTICA FINAL 3
 
 ### Introducción
 
