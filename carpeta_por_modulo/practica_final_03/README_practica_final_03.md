@@ -42,7 +42,7 @@
 
 ● [Mapa conceptual creado por un alumno](https://drive.google.com/file/d/1c46kzTYvCJHkCqS90Rmqd2k0Er26ObD3/view).
 
-● [Campo](https://github.com/QubiQ/sistema-doq/blob/4de257c1348b32afc309593936b6a58ee40ae4bd/practica_final_3/models/pack.py#L64),[vista](https://github.com/QubiQ/sistema-doq/blob/4de257c1348b32afc309593936b6a58ee40ae4bd/practica_final_3/views/pack.xml#L127).
+● [Campo](https://github.com/QubiQ/sistema-doq/blob/4de257c1348b32afc309593936b6a58ee40ae4bd/practica_final_3/models/pack.py#L64), [vista](https://github.com/QubiQ/sistema-doq/blob/4de257c1348b32afc309593936b6a58ee40ae4bd/practica_final_3/views/pack.xml#L127).
 
 ● [Vista](https://github.com/QubiQ/sistema-doq/blob/4de257c1348b32afc309593936b6a58ee40ae4bd/practica_final_3/views/pack.xml#L129).
 
