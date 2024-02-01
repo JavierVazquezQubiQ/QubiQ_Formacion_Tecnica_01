@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!-- Copyright 2024 - Javier Vázquez Flores -->
+
+<odoo>
+
+    <template id="custom_report_sale_document" inherit_id="sale.report_saleorder_document">
+        <xpath expr="//p[@t-field='doc.user_id']" position="replace">
+
+            <!-- This is the easy way -->
+            <!--
+            <t t-foreach="doc.commission_line_ids" t-as="commission">
+               <span t-field="commission.name"> </span>
+            </t>
+            -->
+
+
+            <!-- This is the optimal way -->
+            <!--
+            With "t-esc" we can write python the ','.join(<lista>) concatenates the values
+            of a list separated by, the first .mapped(<field>) returns a list with the
+            grouping of the commercial of the Commercial fields and the second .mapped(<field>)
+            returns the name of each commercial of the commision lines
+            -->
+
+            <p t-esc="', '.join(doc.commission_line_ids.mapped('name').mapped('name'))"/>
+        </xpath>
+    </template>
+
+</odoo>

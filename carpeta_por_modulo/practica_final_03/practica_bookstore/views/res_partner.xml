@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!--
+Copyright 2024 Javier Vázquez <javier.vazquez@qubiq.es>
+License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl)
+-->
+
+<odoo>
+
+    <!-- Res_partner inherit form view -->
+    <record id="view_res_partner_form" model="ir.ui.view">
+        <field name="name">view.res.partner.form</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='vat']" position="after">
+                <field name="bookstore_partner"/>
+                <field name="bookstore_partner_number" attrs="{'invisible': [('bookstore_partner', '=', False)]}"/>
+                <field name="book_author"/>
+                <field name="author_genre_ids" attrs="{'invisible': [('book_author', '=', False)]}" widget="many2many_tags"/>
+            </xpath>
+            <xpath expr="//field[@name='name'][1]" position="attributes">
+                <attribute name="readonly">1</attribute>
+                <attribute name="force_save">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='name'][2]" position="attributes">
+                <attribute name="readonly">1</attribute>
+                <attribute name="force_save">1</attribute>
+            </xpath>
+            <xpath expr="//div[contains(@class, 'oe_title')]" position="after">
+                <group>
+                    <group>
+                        <field name="first_name"/>
+                        <field name="last_name"/>
+                    </group>
+                </group>
+            </xpath>
+
+        </field>
+    </record>
+
+    <!-- Bookstore Partners action window -->
+    <record id="bookstore_partner_action" model="ir.actions.act_window">
+        <field name="name">Bookstore Partners</field>
+        <field name="res_model">res.partner</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="context">{'default_bookstore_partner': True}</field>
+        <field name="domain">[('bookstore_partner', '=', True)]</field>
+    </record>
+
+    <!-- Bookstore Authors action window -->
+    <record id="book_author_action" model="ir.actions.act_window">
+        <field name="name">Book Authors</field>
+        <field name="res_model">res.partner</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="context">{'default_book_author': True}</field>
+        <field name="domain">[('book_author', '=', True)]</field>
+    </record>
+
+</odoo>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Copyright 2024 Javier Vázquez <javier.vazquez@qubiq.es>
+License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl)
+-->
+
+<odoo>
+
+    <!-- custom_layout inherits -->
+    <template id="custom_layout" inherit_id="web.external_layout_standard">
+        <xpath expr="//div[@t-attf-class='footer o_standard_footer o_company_#{company.id}_layout']" position="attributes">
+            <attribute name="style">display: none;</attribute>
+        </xpath>
+    </template>
+
+</odoo>
