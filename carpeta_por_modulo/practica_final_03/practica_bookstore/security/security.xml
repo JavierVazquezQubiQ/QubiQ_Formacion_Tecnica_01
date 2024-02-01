@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Copyright 2024 Javier Vázquez <javier.vazquez@qubiq.es>
+License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl)
+-->
+
+<odoo>
+
+    <!-- Bookstore permissions category -->
+    <record id="module_category_bookstore" model="ir.module.category">
+        <field name="name">Bookstore</field>
+    </record>
+
+    <!-- Bookstore administrato group -->
+    <record id="group_bookstore_admin" model="res.groups">
+        <field name="name">Administrator</field>
+        <field name="category_id" ref="practica_bookstore.module_category_bookstore"/>
+    </record>
+
+</odoo>
