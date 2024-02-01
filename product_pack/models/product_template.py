@@ -33,6 +33,6 @@ class ProductTemplate(models.Model):
             if rec.price_pack_method == 'component_total':
                 rec.components_price = self.list_price
                 for line in rec.component_line_ids:
-                    rec.components_price += line.quantity * line.price
+                    rec.components_price += line.price
             else:
                 rec.components_price = rec.list_price or 0
