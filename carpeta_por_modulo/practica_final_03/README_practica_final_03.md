@@ -56,7 +56,7 @@
 > Es determinante cumplir con todos los criterios de aceptación.
 
 > [!WARNING]
-> Recuerda subir el PR y mencionar a Jesús Ramoneda para que haga las correcciones concretas.
+> Recuerda subir el PR y mencionar al responsable de tu formación para que haga las correcciones concretas.
 
 > [!CAUTION]
-> Corrige los fallos.
+> No hagas MERGE hasta que no tengas feedback de tu responsable de formación. Primero corrige los fallos que hayas tenido y ahora sí! MERGEA!.
