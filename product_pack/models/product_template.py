@@ -23,6 +23,7 @@ class ProductTemplate(models.Model):
     )
     components_price = fields.Float(
         compute="_compute_price_pack",
+        string=_('Components Price'),
         store=True,
         readonly=False,
     )

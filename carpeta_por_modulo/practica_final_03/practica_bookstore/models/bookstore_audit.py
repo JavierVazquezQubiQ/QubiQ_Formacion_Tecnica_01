@@ -14,10 +14,21 @@ class BookstoreAudit(models.Model):
             ('write', _('Modification')),
             ('unlink', _('Deletion'))
         ],
+        string=_('Action Type'),
         readonly=True
     )
 
-    date_time = fields.Datetime()
-    user_id = fields.Many2one('res.users')
-    book_id = fields.Many2one('bookstore')
-    book_name = fields.Char()
+    date_time = fields.Datetime(
+        string=_('Date Time')
+    )
+    user_id = fields.Many2one(
+        'res.users',
+        string=_('User ID')
+    )
+    book_id = fields.Many2one(
+        'bookstore',
+        string=_('Book ID')
+    )
+    book_name = fields.Char(
+        string=_('Book Name')
+    )

@@ -17,10 +17,12 @@ class SaleCommission(models.Model):
         string=_('% Commission')
     )
     sale_id = fields.Many2one(
-        comodel_name='sale.order'
+        comodel_name='sale.order',
+        string=_('Sale ID')
     )
     amount = fields.Float(
         compute='_compute_amount',
+        string=_('Amount'),
         store=True
     )
 

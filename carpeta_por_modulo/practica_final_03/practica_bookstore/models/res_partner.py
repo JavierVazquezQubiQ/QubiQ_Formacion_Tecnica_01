@@ -12,10 +12,18 @@ class ResPartner(models.Model):
         compute='_compute_name',
         store=True
     )
-    first_name = fields.Char()
-    last_name = fields.Char()
-    book_author = fields.Boolean()
-    bookstore_partner = fields.Boolean()
+    first_name = fields.Char(
+        string=_('First Name')
+    )
+    last_name = fields.Char(
+        string=_('Last Name')
+    )
+    book_author = fields.Boolean(
+        string=_('Book Author')
+    )
+    bookstore_partner = fields.Boolean(
+        string=_('Bookstore Partner')
+    )
     bookstore_partner_number = fields.Integer(
         string=_('Partner ID')
     )

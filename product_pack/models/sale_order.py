@@ -7,7 +7,9 @@ from odoo import api, models, fields, _
 class SaleOrder(models.Model):
     _inherit = 'sale.order'
 
-    has_pack = fields.Boolean()
+    has_pack = fields.Boolean(
+        string=_('Has Pack')
+    )
     pack_id = fields.Many2one(
         comodel_name='product.template',
         string=_('Pack'),
@@ -17,7 +19,7 @@ class SaleOrder(models.Model):
     )
 
     @api.onchange('pack_id')
-    def on_change_pack_id(self):
+    def onchange_pack_id(self):
         """
         This function adds the selected pack and its components to the
         sales order. Delete old sales lines and create new ones for the
