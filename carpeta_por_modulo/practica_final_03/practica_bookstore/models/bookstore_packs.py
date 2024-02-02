@@ -19,6 +19,7 @@ class BookstorePacks(models.Model):
     )
     book_ids = fields.Many2many(
         comodel_name='bookstore',
+        string=_('Book IDs'),
         ondelete='restrict',
         required=False
     )

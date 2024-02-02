@@ -2,7 +2,7 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl)
 
 {
-    "name": "Practica Final 02 - Product Packs",
+    "name": "Product Packs",
     "summary": "Product Packs",
     "version": "16.0.1.0.0",
     "category": "Product",
@@ -21,6 +21,7 @@
         'security/ir.model.access.csv',
         'views/product_template.xml',
         'views/product_pack_line.xml',
+        'views/sale_order.xml',
         'reports/report_product_template.xml',
         'reports/reports.xml',
     ],

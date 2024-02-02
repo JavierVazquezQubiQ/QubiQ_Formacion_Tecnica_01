@@ -8,19 +8,22 @@ class ProductPackLine(models.Model):
     _name = 'product.pack.line'
 
     pack_id = fields.Many2one(
-        comodel_name='product.product',
-        string=_("Pack"),
+        comodel_name='product.template',
+        string=_("Pack")
     )
-    component_id = fields.Many2one(
+    product_id = fields.Many2one(
         comodel_name='product.product',
         string=_("Component"),
-        required=True,
+        required=True
     )
     quantity = fields.Integer(
+        string=_('Quantity'),
         default=1
     )
-    price = fields.Float()
+    price = fields.Float(
+        string=_('Price')
+    )
 
-    @api.onchange('component_id')
-    def onchange_component_id(self):
-        self.price = self.component_id.list_price
+    @api.onchange('quantity', 'product_id')
+    def _onchange_price(self):
+        self.price = self.product_id.list_price * self.quantity

@@ -20,6 +20,7 @@ class Bookstore(models.Model):
             ('printed', _('Printed')),
             ('digital', _('Digital')),
         ],
+        string=_('Format')
     )
     edition = fields.Integer()
     author_id = fields.Many2one(
@@ -32,6 +33,7 @@ class Bookstore(models.Model):
     genre_ids = fields.Many2many(
         comodel_name='bookstore.genre',
         ondelete='restrict',
+        string=_('Genre IDs')
     )
     link = fields.Char()
     buy = fields.Boolean(
@@ -52,6 +54,7 @@ class Bookstore(models.Model):
         required=False,
     )
     synopsis = fields.Html(
+        string=_('Synopsis'),
         help=_("Enter the synopsis of the book"),
     )
 

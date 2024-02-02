@@ -2,7 +2,7 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl)
 
 {
-    "name": "Practica Final 01 - User Stories",
+    "name": "User Stories",
     "summary": "Register user stories in Odoo",
     "version": "16.0.1.0.0",
     "category": "Sales",

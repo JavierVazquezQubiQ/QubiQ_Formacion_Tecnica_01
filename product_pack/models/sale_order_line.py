@@ -16,6 +16,6 @@ class SaleOrderLine(models.Model):
 
             for line in self.product_id.component_line_ids:
                 self.name += '\n %s - %i' % (
-                    line.component_id.name,
+                    line.product_id.name,
                     line.quantity,
                 )

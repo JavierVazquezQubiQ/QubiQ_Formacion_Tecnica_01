@@ -23,6 +23,7 @@ class ProductTemplate(models.Model):
     )
     components_price = fields.Float(
         compute="_compute_price_pack",
+        string=_('Components Price'),
         store=True,
         readonly=False,
     )
@@ -35,4 +36,4 @@ class ProductTemplate(models.Model):
                 for line in rec.component_line_ids:
                     rec.components_price += line.price
             else:
-                rec.components_price = rec.list_price or 1
+                rec.components_price = rec.list_price or 0
